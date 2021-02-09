@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lokoheimer.promise" >
+    package="com.lokoheimer.promise">
 
     <application
         android:allowBackup="true"
@@ -8,16 +8,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Promise" >
+        android:theme="@style/Theme.Promise"
+        >
+        <receiver android:name = ".MyNotificationPublisher" />
         <activity
             android:name=".MainActivity"
             android:label="Promise"
-            android:theme="@style/Theme.Promise" >
+            android:theme="@style/Theme.Promise.NoActionBar.Black" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".PromiseCreation"
+            android:label="Promise"
+            android:theme="@style/Theme.Promise.NoActionBar.Black" >
+        </activity>
+        <activity
+            android:name=".InspectActivity"
+            android:label="Promise Card"
+            android:theme="@style/Theme.Promise.NoActionBar.Black" >
         </activity>
         <activity
             android:name=".SettingsActivity"

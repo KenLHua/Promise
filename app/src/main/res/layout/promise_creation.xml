@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="12dp"
+    android:theme="@style/EditTextTheme"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_height="80dp"
+        android:text="Create Promise"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:textColor="@color/pastel_blue">
+    </TextView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:hint="Name*"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameText"
+            android:textColor="@color/white"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/name"
+        android:layout_alignBottom="@id/name"
+        android:layout_alignTop="@id/name"
+        android:layout_alignParentEnd="true"
+        >
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:background="@drawable/circle"
+            android:id="@+id/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </View>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:hint="Description"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="280dp"
+            android:id="@+id/descText"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/routine"
+        android:layout_height="80dp"
+        android:layout_below="@id/desc"
+        android:text="Routine"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginLeft="3dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/pastel_blue">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/routine"
+        android:layout_alignStart="@id/desc"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/date">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/start"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+            android:theme="@style/EditTextTheme"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateText"
+                android:hint="Date" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/time"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_access_time_24"
+            android:theme="@style/EditTextTheme"
+            android:layout_marginLeft="5dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeText"
+                android:hint="Time"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox"
+        android:layout_below="@id/date"
+        android:drawableTint="@color/pastel_blue"
+        android:drawableEnd="@drawable/ic_baseline_notifications_24"
+        android:layoutDirection="rtl"
+        ></CheckBox>
+
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/checkbox"
+        android:layout_below="@id/date"
+        android:visibility="gone"
+
+        app:singleSelection="true">
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1D"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2D"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1W"
+            android:layout_weight="1"
+
+            style="?attr/materialButtonOutlinedStyle"
+            />
+
+        <Button
+            android:id="@+id/button4"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1M" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/exfab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/pastel_blue"
+        app:icon="@drawable/ic_baseline_done_24"
+        app:iconTint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_promise_button"
+        android:textColor="@color/white"
+        android:visibility="gone"
+
+        >
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
+
+
+
+</RelativeLayout>

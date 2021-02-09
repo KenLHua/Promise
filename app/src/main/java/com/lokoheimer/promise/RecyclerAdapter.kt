@@ -1,20 +1,20 @@
 package com.lokoheimer.promise
 
+import android.content.Intent
 import android.util.Log
 import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import org.w3c.dom.Text
 
 class RecyclerAdapter constructor(var dataSet: JSONArray): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -29,38 +29,45 @@ class RecyclerAdapter constructor(var dataSet: JSONArray): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         try {
             val js = dataSet[position] as JSONObject
-            holder.bind(js[Constant.JSON_DATE] as CharSequence, js[Constant.JSON_NOTE] as CharSequence)
+            holder.bind(js[Constant.JSON_DATE] as CharSequence, js[Constant.JSON_NAME] as CharSequence, js[Constant.JSON_FREQ] as CharSequence,js[Constant.JSON_COLOR] as CharSequence?)
         } catch (e: JSONException) {
             Log.e("Adapter", e.toString(), e)
         }
     }
-    inner class ViewHolder(var v: View) : RecyclerView.ViewHolder(v), View.OnClickListener,
+    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener,
         View.OnCreateContextMenuListener {
 
         val date: TextView = v.findViewById<TextView>(R.id.date);
-        val note: TextView = v.findViewById<TextView>(R.id.title);
-        lateinit var cv: MaterialCardView
+        val name: TextView = v.findViewById<TextView>(R.id.name);
+        val freq: TextView = v.findViewById<TextView>(R.id.freq);
+        var cv: MaterialCardView = v.findViewById<MaterialCardView>(R.id.item_card)
 
-        fun bind(sDate: CharSequence?, sNote: CharSequence?) {
+
+        fun bind(sDate: CharSequence?, sName: CharSequence?, sFreq: CharSequence?, sColor: CharSequence?) {
             date.text = sDate
-            note.text = sNote
+            name.text = sName
+            freq.text = sFreq
+            cv.setCardBackgroundColor(sColor.toString().toInt())
+            cv.setOnClickListener(this)
+
         }
 
         override fun onClick(v: View) {
-            //mViewListener.onClick(v, adapterPosition)
+            var intent = Intent(v.context, InspectActivity::class.java)
+            var promiseJSON = DataUtils.getInstance().getEntries()[adapterPosition].toString()
+            intent.putExtra(Constant.JSON_PROMISE, promiseJSON)
+            v.context.startActivity(intent)
+            Log.d("Listener", "hello ken")
         }
 
         override fun onCreateContextMenu(
-            menu: ContextMenu,
-            v: View,
-            menuInfo: ContextMenu.ContextMenuInfo
+                menu: ContextMenu,
+                v: View,
+                menuInfo: ContextMenu.ContextMenuInfo
         ) {
             val Edit = menu.add(adapterPosition, 1, 1, "Edit")
             val Delete =
-                menu.add(adapterPosition, 100, 2, "Delete") //groupId, itemId, order, title
-        }
-        init {
-            this.cv = v.findViewById<MaterialCardView>(R.id.item_card)
+                menu.add(adapterPosition, 100, 2, "Delete") //groupId, itemId, order, name
         }
 
 

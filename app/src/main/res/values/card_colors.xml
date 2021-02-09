@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pastel_red">#C23B23</color>
+    <color name="pastel_orange">#F39A27</color>
+    <color name="pastel_green">#03C03C</color>
+    <color name="pastel_purple">#976ED7</color>
+    <color name="lilac">#E9D3FF</color>
+    <color name="pink">#FEC8D8</color>
+    <color name="tan">#FFDFD3</color>
+    <array name="colors">
+        <item>@color/pink</item>
+        <item>@color/white</item>
+        <item>@color/tan</item>
+        <item>@color/lilac</item>
+        <item>@color/pastel_red</item>
+        <item>@color/pastel_purple</item>
+        <item>@color/pastel_orange</item>
+        <item>@color/pastel_green</item>
+        <item>@color/pastel_blue</item>
+    </array>
+</resources>

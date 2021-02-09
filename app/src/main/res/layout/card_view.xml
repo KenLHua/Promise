@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView style="@style/Widget.MaterialComponents.CardView"
     android:id="@+id/item_card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    app:strokeColor="#B6B6B6"
-    app:cardElevation="3dp"
     android:layout_marginTop="10dp"
-    app:contentPadding="2dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginBottom="6dp"
+    android:layout_marginHorizontal="16dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:contentPadding="16dp"
+>
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
@@ -17,30 +19,46 @@
         android:padding="8dp"
         android:animateLayoutChanges="true">
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
             android:textColor="@color/black"
-            android:layout_marginLeft="18dp"
-            android:layout_centerHorizontal="true" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
         <TextView
             android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_alignTop="@id/date"
+            android:layout_alignStart="@+id/title"
+            android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@id/date"
             android:layout_marginRight="25dp"
             android:drawablePadding="4dp"
-            android:inputType="numberDecimal" />
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="-1D" />
         <TextView
-            android:id="@+id/test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="10dp"
-            android:drawablePadding="4dp"
-            android:text="hello world" />
+            android:layout_alignTop="@id/name"
+            android:layout_alignStart="@id/duration"
+            android:id="@+id/freq"
+            android:text="test"
+            ></TextView>
+
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

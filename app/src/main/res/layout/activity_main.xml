@@ -2,32 +2,52 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
     tools:context=".MainActivity">
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/exfab"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="@dimen/fab_margin"
-        android:theme="@style/Theme.Button"
-        app:icon="@drawable/ic_add_24"
-        app:iconTint="@color/white"
-        android:text="@string/create_promise_button"
-        android:textColor="@color/white"
+        android:id="@+id/tlayout">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:background="@color/dark_grey"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/toolbar"
+            app:title="Promise"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-        >
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/promise_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="70dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:targetApi="o">
+            <!-- android:layoutAnimation="@anim/layout_animation" -->
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/exfab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:text="@string/create_promise_button"
+            android:textColor="@color/white"
+            android:theme="@style/Theme.Button"
+            app:icon="@drawable/ic_add_24"
+            android:layout_gravity="center|bottom"
+            app:iconTint="@color/white"
+            ></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
 
-    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
-
-    <include layout="@layout/content_main"
-        android:layout_below="@id/toolbar"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
