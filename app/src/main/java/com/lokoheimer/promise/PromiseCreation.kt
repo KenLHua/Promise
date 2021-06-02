@@ -18,6 +18,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.snackbar.Snackbar
 import dev.sasikanth.colorsheet.ColorSheet
 import org.w3c.dom.Text
+import java.util.*
 
 
 class PromiseCreation : AppCompatActivity() {
@@ -43,7 +44,6 @@ class PromiseCreation : AppCompatActivity() {
 
         circle.setOnClickListener { view ->
             snackbar("hello")
-            // TODO: Add color selector
             ColorSheet().colorPicker(resources.getIntArray(R.array.colors), listener = { color ->
                 cardColor = color
                 circle.background.colorFilter = BlendModeColorFilter(cardColor, BlendMode.SRC_ATOP)
@@ -59,7 +59,7 @@ class PromiseCreation : AppCompatActivity() {
         nameBox.addTextChangedListener (
             object : TextWatcher {
                 override fun onTextChanged(s: CharSequence, start: Int, after: Int, count: Int) {
-                    if(s.length == 0)
+                    if(s.isEmpty())
                         button.visibility = GONE
                     else
                         button.visibility = VISIBLE
@@ -67,7 +67,6 @@ class PromiseCreation : AppCompatActivity() {
                 // Nothing needed
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun afterTextChanged(s: Editable?) {}
-
             }
         )
 
@@ -98,10 +97,12 @@ class PromiseCreation : AppCompatActivity() {
         }
 
         button.setOnClickListener {view ->
-            DataUtils.getInstance().addEntry(nameBox.text.toString(),descBox.text.toString(),
+            var uniqueKey = DataUtils.nextUID()
+            DataUtils.getInstance().addEntry(uniqueKey.toString(), nameBox.text.toString(),descBox.text.toString(),
                     dateBox.text.toString(), timeBox.text.toString(), notifBox.isChecked.toString(), notifFreq.toString(), cardColor.toString() )
             this.finish()
         }
+
 
 
 

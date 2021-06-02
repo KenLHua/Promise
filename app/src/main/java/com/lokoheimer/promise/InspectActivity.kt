@@ -21,7 +21,7 @@ class InspectActivity : AppCompatActivity() {
         var color = (promiseJSON["color"] as String).toInt()
 
         var routine = findViewById<TextView>(R.id.routine)
-        var nameBox = findViewById<TextView>(R.id.cardName)
+        var titleBox = findViewById<TextView>(R.id.cardTitle)
         //var descBox = findViewById<EditText>(R.id.descText)
         var dateBox = findViewById<TextView>(R.id.cardDate)
         var timeBox = findViewById<TextView>(R.id.cardDuration)
@@ -31,7 +31,7 @@ class InspectActivity : AppCompatActivity() {
         var card = findViewById<MaterialCardView>(R.id.item_card)
 
         // Filling card with relevant data
-        nameBox.text = promiseJSON["name"] as CharSequence?
+        titleBox.text = promiseJSON["title"] as CharSequence?
         //descBox.text = promiseJSON["desc"] as CharSequence?
         dateBox.text = promiseJSON["date"] as CharSequence?
 

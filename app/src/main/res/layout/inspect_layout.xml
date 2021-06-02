@@ -23,7 +23,7 @@
             android:padding="8dp"
             android:animateLayoutChanges="true">
             <TextView
-                android:id="@+id/cardName"
+                android:id="@+id/cardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -32,14 +32,14 @@
                 android:layout_marginBottom="16dp"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:text="name"
+                android:text="Title"
                 android:textStyle="bold"
                 />
             <TextView
                 android:id="@+id/cardDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cardName"
+                android:layout_below="@id/cardTitle"
                 android:layout_alignTop="@id/cardDate"
                 android:layout_alignStart="@+id/title"
                 android:inputType="numberDecimal" />

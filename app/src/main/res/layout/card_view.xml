@@ -19,7 +19,7 @@
         android:padding="8dp"
         android:animateLayoutChanges="true">
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -34,9 +34,9 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
+            android:layout_below="@id/title"
             android:layout_alignTop="@id/date"
-            android:layout_alignStart="@+id/title"
+            android:layout_alignStart="@id/title"
             android:inputType="numberDecimal" />
         <TextView
             android:id="@+id/duration"
@@ -53,7 +53,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/name"
+            android:layout_alignTop="@id/title"
             android:layout_alignStart="@id/duration"
             android:id="@+id/freq"
             android:text="test"

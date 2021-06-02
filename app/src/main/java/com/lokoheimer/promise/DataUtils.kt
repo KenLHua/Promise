@@ -10,13 +10,16 @@ import java.io.File
 import java.io.FileReader
 import java.io.FileWriter
 import java.lang.StringBuilder
+import java.util.*
 
 object DataUtils {
     private var instance: DataUtils? = null
     // Entry contains = {"date", "title", "note", "history" JSONArr [{"type", "date}]}
     private var entries = JSONArray()
     private var dir: File? = null
+    private var max: Int = 0;
     var refreshRequired: Boolean = false
+    var dictionary: Dictionary<String, JSONObject>? = null
 
 
     init{}
@@ -54,10 +57,36 @@ object DataUtils {
             entries = JSONArray();
             Log.d("Kenneth", "New Data array created")
         }
+        dictionary = createDictionary()
+    }
+
+    // Creates the static dictionary and processes what the next UID will be.
+    fun createDictionary(): Dictionary<String, JSONObject>{
+        var max = this.max;
+        var dict = Hashtable<String,JSONObject>()
+       for(i in 0 until entries.length()) {
+           val item = entries.getJSONObject(i)
+           if (dict[item.get(Constant.JSON_UID) as String] == null) {
+               dict[item.get(Constant.JSON_UID) as String] = item
+           }
+
+           var uid = (item.get(Constant.JSON_UID) as String).toInt();
+           if(max == uid)
+               Log.d("UID", "Critical failure, UID overlap")
+           max = if (max < uid) uid else max
+
+       }
+        this.max = max;
+        return dict
+    }
+    fun nextUID() : Int{
+        max += 1;
+        return max-1;
     }
     fun getEntries(): JSONArray {
         return entries!!
     }
+
     fun createTestData(){
         var testObject = JSONObject()
         testObject.put("name", "testtitle")
@@ -106,9 +135,10 @@ object DataUtils {
             Log.e("DataUtils Delete", e.toString(), e)
         }
     }
-    fun addEntry(name: String, desc: String, date: String, time: String, notify: String, freq: String, color: String){
+    fun addEntry(uid: String, title: String, desc: String, date: String, time: String, notify: String, freq: String, color: String){
         var entry = JSONObject()
-        entry.put("name", name)
+        entry.put("uid", uid)
+        entry.put("title", title)
         entry.put("desc",desc)
         entry.put("date",date)
         entry.put("time",time)
@@ -116,6 +146,7 @@ object DataUtils {
         entry.put("freq",freq)
         entry.put("color", color)
         entries.put(entry)
+        dictionary!!.put(uid, entry);
         refreshRequired = true
     }
 

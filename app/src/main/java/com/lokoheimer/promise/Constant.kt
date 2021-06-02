@@ -4,7 +4,8 @@ class Constant{
     companion object{
         val JSON_PROMISE = "JSON_PROMISE"
         val JSON_DATE = "date"
-        val JSON_NAME = "name"
+        val JSON_UID = "uid"
+        val JSON_TITLE = "title"
         val JSON_FREQ = "freq"
         val JSON_NOTE = "note"
         val JSON_COLOR = "color"
